@@ -1,0 +1,16 @@
+ui
+
+NAME
+		ui - an environment for easy jQuery plugins development that follow the sogou-upd-ui-development-norms
+
+SYNOPSIS
+		ui create sgUI - create a ui named sgUI, a "sgCamel" like is suggested
+
+		ui build       - build a ui, merge img and style files into js, and
+		compress files
+
+		ui deploy      - deploy ui to your server
+
+
+AUTHOR
+		sogou UPD
