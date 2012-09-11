@@ -6,10 +6,14 @@ NAME
 SYNOPSIS
 		ui create sgUI - create a ui named sgUI, a "sgCamel" like is suggested
 
+		ui add		   - exc addCMD config in conf.php
+
+		ui ci          - exc ciCMD config in conf.php
+
 		ui build       - build a ui, merge img and style files into js, and
 		compress files
 
-		ui deploy      - deploy ui to your server
+		ui deploy      - exc deployCMD config in conf.php 
 
 
 AUTHOR
