@@ -11,7 +11,7 @@
 	 @constructor
 	 @example $('.#uiname#').#uiname#({enable:0})
 	 * */
-	#uiname# = function($this,options){
+	var #uiname# = function($this,options){
 	
 	};
 	// 如果不需要，可以删除

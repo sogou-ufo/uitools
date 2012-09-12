@@ -47,6 +47,7 @@
             border-collapse: collapse;
             border-spacing: 0;
         }
+    </style>
 		<?php
 		if(file_exists('conf.php'))require_once('conf.php');
 		if(!isset($_GET['mobile'])){
@@ -55,7 +56,7 @@
             	if($dp = opendir($dir)){ 
                 	while(($file=readdir($dp)) != false){ 
                     	if(!is_dir($dir.'/'.$file)){ 
-							echo file_get_contents($dir.'/'.$file);
+						echo '<link rel="stylesheet" href="./css/' . $file . '" type="text/css"/>';
                     	} 
                 	} 
                 	closedir($dp); 
@@ -65,7 +66,6 @@
         	}  
 		}
 		?>
-    </style>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
 	<?php if(isset($uiconf)){?>
 	<script>
@@ -75,9 +75,9 @@
 	</script>
 	<?php }?>
 	<?php if(isset($_GET['mobile'])){ ?>
-	<script src="./build/js/mobile.sgTest.js"></script>
+	<script src="./build/js/mobile.#uiname#.js"></script>
 	<?php }else{ ?>
-	<script src="./js/sgTest.js"></script>
+	<script src="./js/#uiname#.js"></script>
 	<?php }?>
 </head>
 <body style="padding:10px;">
@@ -95,7 +95,7 @@
 <br />
 <p>test code here:</p>
 <textarea id="code" style="width:600px;height:400px;"></textarea>
-<input type=button value="测试" onclick="eval($('#code').attr('value'))"/>
+<input type=button value="run test" onclick="eval($('#code').attr('value'))"/>
 <!--
 	write ur test here
 -->
