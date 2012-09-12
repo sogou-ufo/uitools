@@ -36,12 +36,12 @@
         return this;
     };
     /**
-     通过$.sgUIBase.createSgUI创建一个UI组件
+     通过$.UUIBase.createSgUI创建一个UI组件
 
      @namespace jQuery
-     @class $.sgUIBase
+     @class $.UUIBase
      **/
-    $.sgUIBase = {
+    $.UUIBase = {
         /**
          每个UI都会继承的方法，用于以命令行形式调用ui的接口
 
@@ -61,32 +61,32 @@
         /**
          将js内的css注入到页面里，暂时只针对mobile做此处理
 
-         @method $.sgUIBase.init
-         @example $.sgUIBase.init()
+         @method $.UUIBase.init
+         @example $.UUIBase.init()
          * */
         init: function() {
-            if ($.sgUIBase.css.length) {
-                var cssText = $.sgUIBase.css.join('');
+            if ($.UUIBase.css.length) {
+                var cssText = $.UUIBase.css.join('');
                 if (cssText == '')return;
                 var style = document.createElement('style');
                 style.setAttribute('type', 'text/css');
                 style.innerHTML = cssText;
                 $('head').append(style);
-                $.sgUIBase.css = [];
-                $.sgUIBase.data = [];
+                $.UUIBase.css = [];
+                $.UUIBase.data = [];
             }
         },
         /**
-         创建一个sgUI，将其注册到jQuery上面
+         创建一个uui，将其注册到jQuery上面
 
-         @method $.sgUIBase.create
+         @method $.UUIBase.create
          @param {String} uiName 组件名.
          @param {Function} classCode 组件代码.
-          @example $.sgUIBase.create('datepicker',function($this,options){xxxx});
+          @example $.UUIBase.create('datepicker',function($this,options){xxxx});
          **/
         create: function(uiName, classCode) {
             $[uiName] = classCode;
-            $[uiName].prototype.excSgCMD = $.sgUIBase.excSgCMD;
+            $[uiName].prototype.excSgCMD = $.UUIBase.excSgCMD;
             $.fn[uiName] = function(options) {
                 options = options || {};
                 this.each(function(i, item) {
