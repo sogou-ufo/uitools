@@ -114,9 +114,7 @@
                     }
                 });
                 if (options.instance)
-                    /*
-                     * 移除dom，将ui注入到$实例里面
-                     */
+                    // 移除dom，将ui注入到$实例里面
                     this.getSgUI();
                 return this;
             };
