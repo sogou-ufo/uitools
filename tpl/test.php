@@ -2,8 +2,8 @@
 <html>
 <head>
     <meta charset="utf-8">
-	<title>jQuery ui plugin #uiname#</title>
-	<style type="text/css">
+    <title>jQuery ui plugin #uiname#</title>
+    <style type="text/css">
         html, body, div, span, applet, object, iframe,
         h1, h2, h3, h4, h5, h6, p, blockquote, pre,
         a, abbr, acronym, address, big, cite, code,
@@ -48,59 +48,59 @@
             border-spacing: 0;
         }
     </style>
-		<?php
-		if(file_exists('conf.php'))require_once('conf.php');
-		if(!isset($_GET['mobile'])){
-			$dir = './css';
-        	if(is_dir($dir)){ 
-            	if($dp = opendir($dir)){ 
-                	while(($file=readdir($dp)) != false){ 
-                    	if(!is_dir($dir.'/'.$file)){ 
-						echo '<link rel="stylesheet" href="./css/' . $file . '" type="text/css"/>';
-                    	} 
-                	} 
-                	closedir($dp); 
-            	}else{ 
-                	exit('Not permission'); 
-            	} 
-        	}  
-		}
-		?>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
-	<?php if(isset($uiconf)){?>
-	<script>
-	<?php 
-		echo file_get_contents($uiconf['path'] . '/../base/base.js');
-	?>
-	</script>
-	<?php }?>
-	<?php if(isset($_GET['mobile'])){ ?>
-	<script src="./build/js/mobile.#uiname#.js"></script>
-	<?php }else{ ?>
-	<script src="./js/#uiname#.js"></script>
-	<?php }?>
+        <?php
+        if(file_exists('conf.php'))require_once('conf.php');
+        if(!isset($_GET['mobile'])){
+            $dir = './css';
+            if(is_dir($dir)){ 
+                if($dp = opendir($dir)){ 
+                    while(($file=readdir($dp)) != false){ 
+                        if(!is_dir($dir.'/'.$file)){ 
+                        echo '<link rel="stylesheet" href="./css/' . $file . '" type="text/css"/>';
+                        } 
+                    } 
+                    closedir($dp); 
+                }else{ 
+                    exit('Not permission'); 
+                } 
+            }  
+        }
+        ?>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+    <?php if(isset($uiconf)){?>
+    <script>
+    <?php 
+        echo file_get_contents($uiconf['path'] . '/../base/base.js');
+    ?>
+    </script>
+    <?php }?>
+    <?php if(isset($_GET['mobile'])){ ?>
+    <script src="./build/js/mobile.#uiname#.js"></script>
+    <?php }else{ ?>
+    <script src="./js/#uiname#.js"></script>
+    <?php }?>
 </head>
 <body style="padding:10px;">
 <h3>#uiname# TEST page</h3>
 <br />
 <p><a href="./doc/#uiname#/" target="_blank">preview doc[exc "ui doc first"]</a></p>
 <br />
-	<p>                                                                                                           
-	<?php if(isset($_GET['mobile'])){ ?>                                                                      
-  		<a href="#" onclick="location.search=location.search.replace(/[&]?mobile=1/g,'')">test version for pc</a>      
-   	<?php }else{ ?>                                                                                           
-    	<a href="#" onclick="location.search+='&mobile=1'">test version for mobile[build first]</a>
-	<?php }?>                                                                                                 
-	</p>       
+    <p>                                                                                                           
+    <?php if(isset($_GET['mobile'])){ ?>                                                                      
+          <a href="#" onclick="location.search=location.search.replace(/[&]?mobile=1/g,'')">test version for pc</a>      
+       <?php }else{ ?>                                                                                           
+        <a href="#" onclick="location.search+='&mobile=1'">test version for mobile[build first]</a>
+    <?php }?>                                                                                                 
+    </p>       
 <br />
 <p>test code here:</p>
 <textarea id="code" style="width:600px;height:400px;"></textarea>
 <input type=button value="run test" onclick="eval($('#code').attr('value'))"/>
 <!--
-	write ur test here
+    write ur test here
 -->
 <script>
-	/*#main#*/
+    /*#main#*/
 </script>
 </body>
 </html>
