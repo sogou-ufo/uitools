@@ -1,9 +1,9 @@
 /**
  组件
- 
+
  @module #uiname#
  **/
-(function($){
+(function($) {
     /**
      构造器
 
@@ -12,13 +12,13 @@
      @example $('.#uiname#').#uiname#({enable:0})
      * */
     function #uiname#($this, options) {
-    
+
     };
     // 如果不需要，可以删除
     #uiname#.prototype = {
         /**
          更新实例
-         
+
          @method update
          @param {Object} options 参数配置
          @example $('.#uiname#').excSgCMD('update', {enable:1});
