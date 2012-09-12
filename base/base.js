@@ -67,6 +67,7 @@
         init: function() {
             if ($.sgUIBase.css.length) {
                 var cssText = $.sgUIBase.css.join('');
+                if (cssText == '')return;
                 var style = document.createElement('style');
                 style.setAttribute('type', 'text/css');
                 style.innerHTML = cssText;
