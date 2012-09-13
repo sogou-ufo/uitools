@@ -23,15 +23,15 @@
     /**
      链式方式调用组件方法，不会返回执行结果
 
-     @method $.fn.excSgCMD
+     @method $.fn.excUUICMD
      @param {String} cmd api名.
      @param {Object} options 传递给api的参数.
-     @example $('.datepicker').excSgCMD('setDate','2012-09-04');
+     @example $('.datepicker').excUUICMD('setDate','2012-09-04');
      **/
-    $.fn.excSgCMD = function(cmd, options) {
+    $.fn.excUUICMD = function(cmd, options) {
         if (!this.uui)this.getUUI();
         this.each(function(i, ui) {
-            ui.excSgCMD && ui.excSgCMD(cmd, options);
+            ui.excUUICMD && ui.excUUICMD(cmd, options);
         });
         return this;
     };
@@ -45,13 +45,13 @@
         /**
          每个UI都会继承的方法，用于以命令行形式调用ui的接口
 
-         @method excSgCMD
+         @method excUUICMD
          @param {String} cmd ui接口名字.
          @param {Object} options 传递给接口的参数，必须是key=>value形式.
          @return 返回接口执行结果.
          @protected
          **/
-        excSgCMD: function(cmd, options) {
+        excUUICMD: function(cmd, options) {
             if (this.cmd) {
                 return this.cmd(options);
             }
@@ -86,7 +86,7 @@
          **/
         create: function(uiName, classCode) {
             $[uiName] = classCode;
-            $[uiName].prototype.excSgCMD = $.UUIBase.excSgCMD;
+            $[uiName].prototype.excUUICMD = $.UUIBase.excUUICMD;
             $.fn[uiName] = function(options) {
                 options = options || {};
                 this.each(function(i, item) {
@@ -95,12 +95,12 @@
                         /* 是否移除 */
                         if (options.remove) {
                             /* 移除 */
-                            $(item).excSgCMD('destroy', options);
+                            $(item).excUUICMD('destroy', options);
                             $(item).removeData('uui');
                         }
                         else
                         /* 更新ui */
-                        $(item).excSgCMD('update', options);
+                        $(item).excUUICMD('update', options);
                     }
                     else if (!options.remove) {
                     /* 新建一个实例 */

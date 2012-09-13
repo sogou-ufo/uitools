@@ -21,7 +21,7 @@
 
          @method update
          @param {Object} options 参数配置
-         @example $('.#uiname#').excSgCMD('update', {enable:1});
+         @example $('.#uiname#').excUUICMD('update', {enable:1});
          * */
         destroy: function(options) {},
         /**
@@ -29,7 +29,7 @@
 
          @method destroy
          @param {Object} options 参数配置
-         @example $('.#uiname#').excSgCMD('destroy', {enable:1});
+         @example $('.#uiname#').excUUICMD('destroy', {enable:1});
          * */
         update: function(options) {}
     };
