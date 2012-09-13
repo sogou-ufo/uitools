@@ -1,5 +1,5 @@
 /**
- 给jQuery添加可直接操作sgui的接口，以支持链式语法
+ 给jQuery添加可直接操作uui的接口，以支持链式语法
 
  @module base
  **/
@@ -7,17 +7,17 @@
     /**
      Returns this，以支持链式语法，同时将缓存到dom上的ui实例注入到jQuery对象里，经此调用后的jQuery实例将失去之前筛选的dom队列
 
-     @method $.fn.getSgUI
+     @method $.fn.getUUI
      @return jQuery this.
-     @example $('.datepicker').getSgUI();
+     @example $('.datepicker').getUUI();
      **/
-    $.fn.getSgUI = function() {
+    $.fn.getUUI = function() {
         //this.tmp = [];
         this.each(function(i, dom) {
             //this.tmp.push(dom);
-            this[i] = $(dom).data('sgui');
+            this[i] = $(dom).data('uui');
         });
-        this.sgui = 1;
+        this.uui = 1;
         return this;
     };
     /**
@@ -29,7 +29,7 @@
      @example $('.datepicker').excSgCMD('setDate','2012-09-04');
      **/
     $.fn.excSgCMD = function(cmd, options) {
-        if (!this.sgui)this.getSgUI();
+        if (!this.uui)this.getUUI();
         this.each(function(i, ui) {
             ui.excSgCMD && ui.excSgCMD(cmd, options);
         });
@@ -90,13 +90,13 @@
             $.fn[uiName] = function(options) {
                 options = options || {};
                 this.each(function(i, item) {
-                    /* 当前元素已经绑定一个sgui */
-                    if ($(item).data('sgui')) {
+                    /* 当前元素已经绑定一个uui */
+                    if ($(item).data('uui')) {
                         /* 是否移除 */
                         if (options.remove) {
                             /* 移除 */
-                            $(item).data('sgui').remove();
-                            $(item).removeData('sgui');
+                            $(item).excSgCMD('destroy', options);
+                            $(item).removeData('uui');
                         }
                         else
                         /* 更新ui */
@@ -110,12 +110,12 @@
                         if (options.enable === undefined && options.disable === undefined)
                                 options.enable = true;
 
-                        $(item).data('sgui', new $[uiName]($(item), options));
+                        $(item).data('uui', new $[uiName]($(item), options));
                     }
                 });
                 if (options.instance)
                     // 移除dom，将ui注入到$实例里面
-                    this.getSgUI();
+                    this.getUUI();
                 return this;
             };
         }

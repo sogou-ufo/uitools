@@ -23,6 +23,14 @@
          @param {Object} options 参数配置
          @example $('.#uiname#').excSgCMD('update', {enable:1});
          * */
+        destroy: function(options) {},
+        /**
+         销毁实例
+
+         @method destroy
+         @param {Object} options 参数配置
+         @example $('.#uiname#').excSgCMD('destroy', {enable:1});
+         * */
         update: function(options) {}
     };
     $.UUIBase.create('#uiname#', #uiname#);
