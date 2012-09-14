@@ -13,12 +13,13 @@
      **/
     $.fn.getUUI = function() {
         //this.tmp = [];
-        this.each(function(i, dom) {
+        var _ = this;
+        _.each(function(i, dom) {
             //this.tmp.push(dom);
-            this[i] = $(dom).data('uui');
+            _[i] = $(dom).data('uui');
         });
-        this.uui = 1;
-        return this;
+        _.uui = 1;
+        return _;
     };
     /**
      链式方式调用组件方法，不会返回执行结果
