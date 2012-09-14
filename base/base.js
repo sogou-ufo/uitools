@@ -53,8 +53,8 @@
          @protected
          **/
         excUUICMD: function(cmd, options) {
-            if (this.cmd) {
-                return this.cmd(options);
+            if (this[cmd]) {
+                return this[cmd](options);
             }
         },
         data: {},
