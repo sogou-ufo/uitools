@@ -17,21 +17,21 @@
     // 如果不需要，可以删除
     #uiname#.prototype = {
         /**
-         更新实例
+         更新实例实现，请通过$('.#uiname#').#uiname#({xxxx})调用
 
          @method update
          @param {Object} options 参数配置
-         @example $('.#uiname#').excUUICMD('update', {enable:1});
+         @example $('.#uiname#').#uiname#().excUUICMD('update', {enable:1 }) = $('.#uiname#').#uiname#({enable: 1});
          * */
-        destroy: function(options) {},
+        update: function(options) {},
         /**
-         销毁实例
+         实例内部自我销毁的接口，但是不能销毁和dom的绑定，不建议调用，请使用$('.#uiname#').#uiname#({destroy: 1})
 
          @method destroy
          @param {Object} options 参数配置
-         @example $('.#uiname#').excUUICMD('destroy', {enable:1});
+         @example $('.#uiname#').#uiname#().excUUICMD('destroy');
          * */
-        update: function(options) {}
+        destroy: function(options) {}
     };
     $.UUIBase.create('#uiname#', #uiname#);
     // 创建css

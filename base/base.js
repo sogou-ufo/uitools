@@ -8,18 +8,17 @@
      Returns this，以支持链式语法，同时将缓存到dom上的ui实例注入到jQuery对象里，经此调用后的jQuery实例将失去之前筛选的dom队列
 
      @method $.fn.getUUI
-     @return jQuery this.
+     @return ui list
      @example $('.datepicker').getUUI();
      **/
-    $.fn.getUUI = function() {
-        //this.tmp = [];
-        var _ = this;
-        _.each(function(i, dom) {
+    $.fn.getUUI = function(uiName) {
+        var arr = [];
+        var uiName = uiName || this.uiName;
+        this.each(function(i, dom) {
             //this.tmp.push(dom);
-            _[i] = $(dom).data('uui');
+            $(dom).data(uiName) && arr.push($(dom).data(uiName));
         });
-        _.uui = 1;
-        return _;
+        return arr;
     };
     /**
      链式方式调用组件方法，不会返回执行结果
@@ -30,8 +29,8 @@
      @example $('.datepicker').excUUICMD('setDate','2012-09-04');
      **/
     $.fn.excUUICMD = function(cmd, options) {
-        if (!this.uui)this.getUUI();
-        this.each(function(i, ui) {
+        var uis = this.getUUI(this.uiName);
+        $.each(uis, function(i, ui) {
             ui.excUUICMD && ui.excUUICMD(cmd, options);
         });
         return this;
@@ -89,34 +88,31 @@
             $[uiName] = classCode;
             $[uiName].prototype.excUUICMD = $.UUIBase.excUUICMD;
             $.fn[uiName] = function(options) {
-                options = options || {};
+                var _options = options || {};
+                this.uiName = uiName;
                 this.each(function(i, item) {
-                    /* 当前元素已经绑定一个uui */
-                    if ($(item).data('uui')) {
-                        /* 是否移除 */
-                        if (options.remove) {
-                            /* 移除 */
-                            $(item).excUUICMD('destroy', options);
-                            $(item).removeData('uui');
+                    // 已经存在一个
+                    if ($(item).data(uiName)) {
+                        if (_options.destroy) {
+                            // 移除
+                            $(item).data(uiName).excUUICMD('destroy', _options);
+                            $(item).removeData(uiName);
                         }
                         else
-                        /* 更新ui */
-                        $(item).excUUICMD('update', options);
+                        // 如果传递了!false的options，则更新ui，否则只是实现获取ui
+                        options && $(item).data(uiName).excUUICMD('update', _options);
                     }
-                    else if (!options.remove) {
-                    /* 新建一个实例 */
-                        /*
-                         * 默认enable实例
-                         */
-                        if (options.enable === undefined && options.disable === undefined)
-                                options.enable = true;
+                    else if (!_options.destroy) {
+                        // 新建，默认enable
+                        if (_options.enable === undefined && _options.disable === undefined)
+                                _options.enable = true;
 
-                        $(item).data('uui', new $[uiName]($(item), options));
+                        $(item).data(uiName, new $[uiName]($(item), _options));
                     }
                 });
-                if (options.instance)
-                    // 移除dom，将ui注入到$实例里面
-                    this.getUUI();
+                if (_options.instance)
+                    // 返回uilist 
+                    return this.getUUI();
                 return this;
             };
         }
