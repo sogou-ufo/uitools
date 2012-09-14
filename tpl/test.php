@@ -94,8 +94,12 @@
     </p>       
 <br />
 <p>test code here:</p>
-<textarea id="code" style="width:600px;height:400px;"></textarea>
+<textarea id="code" style="width:600px;height:400px;">
+$('##uiname#Box').uuiTest2({});
+</textarea>
 <input type=button value="run test" onclick="eval($('#code').attr('value'))"/>
+<p>test dom here:</p>
+<div id="#uiname#Box">#uiname# Test</div>
 <!--
     write ur test here
 -->
