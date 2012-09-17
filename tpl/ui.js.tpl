@@ -12,7 +12,22 @@
      @example $('.#uiname#').#uiname#({enable:0})
      * */
     function #uiname#($this, options) {
+        var _ = this, _o;
+        // default setting
+        _o = _.options = {
+            };
+        _.update(options || {});
 
+        /**
+         实例内部自我销毁的接口，但是不能销毁和dom的绑定，不建议调用，请使用$('.#uiname#').#uiname#({destroy: 1})
+
+         @method destroy
+         @param {Object} options 参数配置
+         @example $('.#uiname#').#uiname#().excUUICMD('destroy');
+         * */
+        _.destroy = function(options) {
+            // $this.off(event, query, handler);
+            };
     };
     // 如果不需要，可以删除
     #uiname#.prototype = {
@@ -23,15 +38,9 @@
          @param {Object} options 参数配置
          @example $('.#uiname#').#uiname#().excUUICMD('update', {enable:1 }) = $('.#uiname#').#uiname#({enable: 1});
          * */
-        update: function(options) {},
-        /**
-         实例内部自我销毁的接口，但是不能销毁和dom的绑定，不建议调用，请使用$('.#uiname#').#uiname#({destroy: 1})
-
-         @method destroy
-         @param {Object} options 参数配置
-         @example $('.#uiname#').#uiname#().excUUICMD('destroy');
-         * */
-        destroy: function(options) {}
+        update: function(options) {
+            this.options = $.extend(this.options, options);
+            }
     };
     $.UUIBase.create('#uiname#', #uiname#);
     // 创建css
