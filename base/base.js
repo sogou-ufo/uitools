@@ -3,7 +3,7 @@
 
  @module base
  **/
-(function() {
+(function($) {
     /**
      Returns this，以支持链式语法，同时将缓存到dom上的ui实例注入到jQuery对象里，经此调用后的jQuery实例将失去之前筛选的dom队列
 
