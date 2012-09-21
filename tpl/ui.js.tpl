@@ -41,8 +41,6 @@
          * *\/
         destroy: function(options) {
             // 组件自有的特殊的自我销毁逻辑
-            // 执行继承的解除事件绑定的逻辑
-            this._destroy();
         }
         */
     };

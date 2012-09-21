@@ -68,7 +68,8 @@
             excUUICMD: function(cmd, options) {
                 if (this[cmd]) {
                     this[cmd](options);
-                } else if(cmd == 'destroy') {
+                }
+                if(cmd == 'destroy') {
                     this._destroy(options); 
                 }
             },
